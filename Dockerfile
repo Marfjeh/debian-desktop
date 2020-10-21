@@ -5,7 +5,7 @@
 #
 
 # Pull base image.
-FROM debian:jessie 
+FROM debian:buster
 
 # Install MATE and VNC server.
 RUN \
@@ -22,7 +22,4 @@ CMD ["bash"]
 # Expose ports.
 EXPOSE 5901
 
-RUN echo "deb     http://qgis.org/debian jessie main" >> /etc/apt/sources.list
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-key 3FF5FFCAD71472C4
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y qgis python-qgis qgis-plugin-grass
 RUN mkdir /root/.vnc && echo "debian" | vncpasswd -f > /root/.vnc/passwd && chmod 600 /root/.vnc/passwd
